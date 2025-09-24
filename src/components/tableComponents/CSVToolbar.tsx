@@ -23,7 +23,7 @@ export const CSVToolbar = ({
   const totalPages = Math.ceil(total / pageSize);
 
   return (
-    <div className="flex justify-between items-center mb-2 w-full">
+    <div className="flex justify-between items-center mb-2 w-full md:flex-row gap-2 flex-col">
       {/* 🔍 Search */}
       <input
         type="text"
