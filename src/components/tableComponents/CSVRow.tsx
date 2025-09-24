@@ -11,6 +11,11 @@ interface Props {
 export const CSVRow = ({ row, rowIndex, headers, onEditCell }: Props) => {
   return (
     <tr className="hover:bg-black/50 cursor-pointer">
+      {/* Row number column */}
+      <td className="px-3 py-2 border text-sm font-semibold text-white">
+        {rowIndex + 1} {/* 1-based index */}
+      </td>
+
       {headers.map((col) => (
         <CSVCell
           key={col}

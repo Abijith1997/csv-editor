@@ -22,6 +22,7 @@ export const CSVHeader = ({ headers, sortConfig, setSortConfig }: Props) => {
 
   return (
     <tr>
+      <th className="px-3 py-2 border bg-black">#</th>
       {headers.map((h) => (
         <th
           key={h}
