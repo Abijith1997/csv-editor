@@ -1,5 +1,6 @@
 import { resetBooks } from "../../slice/fakerSlice";
 import { useAppDispatch } from "../../store/hooks";
+import { DownloadCSVButton } from "../buttons/DownloadButton";
 
 interface Props {
   filterText: string;
@@ -54,6 +55,8 @@ export const CSVToolbar = ({
         >
           Next
         </button>
+
+        <DownloadCSVButton />
 
         {/* 🔄 Reset */}
         <button
