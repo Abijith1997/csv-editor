@@ -4,13 +4,13 @@ import type { BookRow } from "../types/types";
 interface BooksState {
   rows: BookRow[]; // current working copy
   originalRows: BookRow[]; // immutable safe copy
-  headers: (keyof BookRow)[];
+  headers: (keyof BookRow)[]; // dynamic headers
 }
 
 const initialState: BooksState = {
   rows: [],
   originalRows: [],
-  headers: ["Title", "Author", "Genre", "PublishedYear", "ISBN"],
+  headers: [], // start empty
 };
 
 const booksSlice = createSlice({
@@ -20,6 +20,13 @@ const booksSlice = createSlice({
     setBooks: (state, action: PayloadAction<BookRow[]>) => {
       state.rows = action.payload;
       state.originalRows = [...action.payload]; // deep safe copy
+
+      // Set headers dynamically from the first row (if exists)
+      if (action.payload.length > 0) {
+        state.headers = Object.keys(action.payload[0]) as (keyof BookRow)[];
+      } else {
+        state.headers = [];
+      }
     },
 
     // 🔹 Update a single cell by rowIndex + column + newValue
